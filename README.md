@@ -55,7 +55,7 @@ const (
 )
 ```
 
-and with this its trivial to let `versioner` show you it's version like this
+and with this its trivial to let `myfancyprogram` show you it's version like this
 
 ```go
 myfancyprogram v0.2.0a
