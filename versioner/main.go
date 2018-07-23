@@ -81,7 +81,7 @@ func writeOutput(filename string, atts []att) (bnoChanged []att) {
 		if a.key == *flagBno {
 			n, err := strconv.Atoi(a.val)
 			if err != nil {
-				log.Fatal("invalid build number '%s' in attribute %s", a.val, a.key)
+				log.Fatalf("invalid build number '%s' in attribute %s", a.val, a.key)
 			}
 			a.val = strconv.Itoa(n + 1)
 			atts[i].val = a.val
