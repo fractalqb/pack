@@ -1,4 +1,7 @@
 # pack
+[![Build Status](https://travis-ci.org/fractalqb/pack.svg)](https://travis-ci.org/fractalqb/pack)
+[![codecov](https://codecov.io/gh/fractalqb/pack/branch/master/graph/badge.svg)](https://codecov.io/gh/fractalqb/pack)
+[![Go Report Card](https://goreportcard.com/badge/github.com/fractalqb/pack)](https://goreportcard.com/report/github.com/fractalqb/pack)
 [![GoDoc](https://godoc.org/github.com/fractalqb/pack?status.svg)](https://godoc.org/github.com/fractalqb/pack)
 
 `import "git.fractalqb.de/fractalqb/pack"`
@@ -55,7 +58,7 @@ const (
 )
 ```
 
-and with this its trivial to let `myfancyprogram` show you it's version like this
+and with this its trivial to let `myfancyprogram` show you its version like this
 
 ```go
 myfancyprogram v0.2.0a

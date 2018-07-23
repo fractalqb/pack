@@ -1,0 +1,15 @@
+language: go
+
+go:
+  - tip
+
+go_import_path: git.fractalqb.de/fractalqb/pack
+
+before_install:
+  - go get -t -v ./...
+
+script:
+  - go test -race -coverprofile=coverage.txt -covermode=atomic ./...
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
