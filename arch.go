@@ -7,6 +7,9 @@ import (
 	"path/filepath"
 )
 
+// ZipDist creates a ZIP file with filenam zipname. Extracting the package will
+// create a folder with name dist. The contents of the distribution is taken
+// from distDir.
 func ZipDist(zipname string, dist, distDir string) error {
 	zf, err := os.Create(zipname)
 	if err != nil {

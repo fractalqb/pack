@@ -7,6 +7,8 @@ import (
 	"path/filepath"
 )
 
+// CopyFile copies file with path src to file with path dst. It also tarnsfers
+// the file mode from the src file to the dst file.
 func CopyFile(dst, src string) error {
 	df, err := os.Create(dst)
 	if err != nil {
@@ -31,6 +33,8 @@ func CopyFile(dst, src string) error {
 	return err
 }
 
+// CopyToDir copies a list of files to a single destination directory using
+// CopyFile on each source file.
 func CopyToDir(dst string, files ...string) error {
 	for _, f := range files {
 		b := filepath.Base(f)
@@ -43,6 +47,9 @@ func CopyToDir(dst string, files ...string) error {
 	return nil
 }
 
+// CopyRecursive copies the content of the src directory into the dst directory.
+// If filter is not nil only those files or subdirectories are copied for which
+// the filter returns true.
 func CopyRecursive(dst, src string, filter func(dir string, info os.FileInfo) bool) error {
 	rddir, err := os.Open(src)
 	if err != nil {
@@ -87,6 +94,8 @@ func CopyRecursive(dst, src string, filter func(dir string, info os.FileInfo) bo
 	return nil
 }
 
+// CopyTree copies the directory tree src into the dst directory, i.e. on succes
+// the directory dst will contain one, perhaps new, directory src.
 func CopyTree(dst, src string, filter func(dir string, info os.FileInfo) bool) error {
 	dst = filepath.Join(dst, filepath.Base(src))
 	err := os.Mkdir(dst, 0777)

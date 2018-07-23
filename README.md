@@ -23,19 +23,49 @@ for!
 There is just a little tool included to create a source file with constants
 defining the current version of the package. The idea is extraordinary simple:
 Write down the version parameters in a separate text file from which not only
-the Go code can be generated but that likely can be processed by a lot of other
-programs too, e.g. shell, makefiles, Python:
+the Go code can be generated but that also can likely be processed by a lot of
+other programs too, e.g. shell, makefiles, Python and many others:
 
 ```shell
 major=0
 minor=2
 bugfix=0
 quality="a"
-build_no=13
 ```
 
-With such a simple file an one line, e.g. in [versioner.go]
+With such a simple file and one line, e.g. in an application's `main.go`
 
+```go
+package main
+…
+//go:generate versioner ./VERSION ./version.go
+…
+```
+
+a simple `go generate` will create the file `version.go` from the file `VERSION`:
+
+```go
+package main
+
+const (
+	Major = 0
+	Minor = 2
+	Bugfix = 0
+	Quality = "a"
+)
+```
+
+and with this its trivial to let `versioner` show you it's version like this
+
+```go
+myfancyprogram v0.2.0a
+Usage: [flags] input output
+…
+```
+
+There are also some flags to define a common prefix for the constants, to have
+automatically increasing build numbers and to generate a timestamp from
+`time.Now()`.
 
 # Install
 To get the library for writing your packing program:
