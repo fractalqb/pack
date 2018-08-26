@@ -21,6 +21,7 @@ func CopyFile(dst, src string, osdn OsDepNames) error {
 	if osdn != nil {
 		if pat, ok := osdn[runtime.GOOS]; ok {
 			src = fmt.Sprintf(pat, src)
+			dst = fmt.Sprintf(pat, dst)
 		}
 	}
 	df, err := os.Create(dst)
